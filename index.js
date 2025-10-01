@@ -2,10 +2,14 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+const PORT = process.env.PORT || 3000;
 
 const SECRET_KEY = "your-secret-key";
 
@@ -57,4 +61,4 @@ async function verifyUser(req, res, next) {
   next();
 }
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+app.listen(PORT, () => console.log("Server running on http://localhost:3000"));
